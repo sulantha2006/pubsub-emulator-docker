@@ -9,4 +9,4 @@ EXPOSE 8300
 VOLUME /data
 
 ENTRYPOINT ["gcloud", "beta", "emulators", "pubsub"]
-CMD ["start", "--host-port=127.0.0.1:8300", "--data-dir=/data"]
+CMD ["start", "--host-port=0.0.0.0:8300", "--data-dir=/data"]
