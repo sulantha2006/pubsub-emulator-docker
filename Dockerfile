@@ -9,4 +9,4 @@ EXPOSE $PORT
 VOLUME /data
 
 ENTRYPOINT ["gcloud", "beta", "emulators", "pubsub"]
-CMD ["start", "--project=$PUBSUB_PROJECT_ID", "--host-port=0.0.0.0:$PORT", "--data-dir=/data"]
+CMD ["start", "--project=${PUBSUB_PROJECT_ID}", "--host-port=0.0.0.0:${PORT}", "--data-dir=/data"]
