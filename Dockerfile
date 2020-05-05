@@ -5,7 +5,7 @@ FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
 MAINTAINER sulantha.s@gmail.com
 
 RUN apk add --update --no-cache &&\
-    gcloud components install cloud-pubsub-emulator beta --quiet
+    gcloud components install pubsub-emulator beta --quiet
 
 EXPOSE $PORT
 
