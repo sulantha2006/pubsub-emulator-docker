@@ -4,6 +4,9 @@ ARG GCLOUD_SDK_VERSION=alpine
 FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
 MAINTAINER sulantha.s@gmail.com
 
+RUN apk add --update --no-cache &&\
+    gcloud components install cloud-pubsub-emulator beta --quiet
+
 EXPOSE $PORT
 
 VOLUME /data
