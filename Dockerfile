@@ -4,12 +4,13 @@ ARG GCLOUD_SDK_VERSION=alpine
 FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
 MAINTAINER sulantha.s@gmail.com
 
-RUN apk add --update --no-cache &&\
-    gcloud components install pubsub-emulator beta --quiet
+RUN apk --update add openjdk8-jre
+RUN gcloud components install pubsub-emulator beta --quiet
 
-EXPOSE $PORT
+VOLUME /opt/data
 
-VOLUME /data
+COPY start-pubsub .
 
-ENTRYPOINT ["gcloud", "beta", "emulators", "pubsub"]
-CMD ["start", "--project=${PUBSUB_PROJECT_ID}", "--host-port=0.0.0.0:${PORT}", "--data-dir=/data"]
+EXPOSE 8300
+
+ENTRYPOINT ["./start-pubsub"]
